@@ -1,0 +1,6 @@
+/webServices/appenv/Include
+/webServices/appenv/Lib
+/webServices/appenv/Scripts
+/webServices/appenv/pip-selfcheck.json
+/webServices/appenv/pyvenv.cfg
+**/__pycache__
