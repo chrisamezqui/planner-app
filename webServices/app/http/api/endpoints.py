@@ -15,7 +15,7 @@ USER = 'name@example.com'
 def json_response(payload, status=200):
     return (json.dumps(payload), status, {'content-type': 'application/json'})
 
-def get_random_id():
+def get_random_id(): #TODO: move this functionality into service.py
     return uuid4().int & (1<<63)-1
 
 @app.route("/stickynoteIndex", methods=["GET"])
@@ -25,11 +25,13 @@ def get_all_notes():
 @app.route("/stickynoteIndex", methods=["POST"])
 def create_note():
     data = json.loads(request.data)
-    data['note_id'] = get_random_id()
+    data['note_id'] = get_random_id() # this is just temporary, id will be supplied by cient side
     postdata = PostdataSchema().load(data)
     if postdata.errors:
         return json_response({'error': postdata.errors}, 422)
-    stickynote = StickynoteService(USER).create_stickynote_for(postdata)
+    stickynote, error = StickynoteService(USER).create_stickynote_for(postdata)
+    if error:
+        return json_response({'error': error}, 500)
     return json_response(stickynote)
 
 @app.route("/stickynote/<int:note_id>", methods=["GET"])
@@ -65,7 +67,7 @@ def get_all_types():
 @app.route("/posttypeIndex", methods=["POST"])
 def create_type():
     data = json.loads(request.data)
-    data['type_id'] = get_random_id()
+    data['type_id'] = get_random_id() # this is just temporary, id will be supplied by cient side
     pt_data = PosttypeDataSchema().load(data)
     if pt_data.errors:
         return json_response({'error': pt_data.errors}, 422)
