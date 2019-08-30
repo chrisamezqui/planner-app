@@ -5,7 +5,6 @@ from app.stickynote.schema import PostdataSchema, PosttypeDataSchema
 from flask_cors import CORS
 from uuid import uuid4
 # from ...repository.mongo_constants import *
-#note
 
 app = Flask(__name__)
 CORS(app)
@@ -15,7 +14,7 @@ USER = 'name@example.com'
 def json_response(payload, status=200):
     return (json.dumps(payload), status, {'content-type': 'application/json'})
 
-def get_random_id(): #TODO: move this functionality into service.py
+def get_random_id():
     return uuid4().int & (1<<63)-1
 
 @app.route("/stickynoteIndex", methods=["GET"])
