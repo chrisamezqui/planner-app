@@ -15,3 +15,4 @@ Cooler name coming soon...
 1. To launch flask server, run `python -m app`
 1. Go to `app/http/web/app/` directory to set up front-end react.js
 1. Run `yarn install`
+1. To launch, run `npm run`
