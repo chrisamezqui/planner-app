@@ -2,7 +2,7 @@
 Cooler name coming soon...
 
 ## Dependencies
-1. Python 3.7+ (with pip and venv which should come with python installation)
+1. Python 3.7+ (with venv which should come with python installation)
 1. Docker tool-kit
 1. Yarn (dependency manager)
 

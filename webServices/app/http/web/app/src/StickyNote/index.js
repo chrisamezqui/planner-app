@@ -5,6 +5,8 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+
 
 const styles = themes => ({
   card: {
@@ -32,6 +34,7 @@ class StickyNote extends React.Component {
           <Typography className={classes.body} component="p" gutterBottom>
             This is a note. Hello.
           </Typography>
+          <TextField/>
         </CardContent>
       </Card>
     );
